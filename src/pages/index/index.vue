@@ -2,13 +2,18 @@
 	<view class="content">
 		<image class="logo" src="/static/images/logo.png"></image>
 		<view>
-			<text class="title">{{ title }}</text>
+			<button class="title" @click="to">点击</button>
 		</view>
+		<u-button type="primary">主要按钮</u-button>
 	</view>
 </template>
 
 <script>
+	import uButton from "uview-ui/components/u-button/u-button.vue";
 	export default {
+		components: {
+			uButton
+		},
 		data() {
 			return {
 				title: 'Hello'
@@ -16,18 +21,25 @@
 		},
 		onLoad() {
 			// 请求示例
-			let url = '/demo/hello';
-			this.$http.request({url, method: 'get', data: {}}).then(res => {
-				this.title = res.msg;
-				uni.setStorageSync('token', res.data.token);
-				uni.showToast({
-					title: res.msg,
-					icon: 'none',
-					duration: 2000
-				});
-			});
+			// let url = '/demo/hello';
+			// this.$http.request({url, method: 'get', data: {}}).then(res => {
+			// 	this.title = res.msg;
+			// 	uni.setStorageSync('token', res.data.token);
+			// 	uni.showToast({
+			// 		title: res.msg,
+			// 		icon: 'none',
+			// 		duration: 2000
+			// 	});
+			// });
 		},
-		methods: {}
+		methods: {
+			to(){
+				let url='/pages/two/two';
+				uni.navigateTo({
+					url: url
+				});
+			}
+		}
 	};
 </script>
 
